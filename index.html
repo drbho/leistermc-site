@@ -3,123 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeisterMC | Official Site</title>
+    <title>LEISTERMC | THE RESISTANCE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Quantico:wght@400;700&display=swap');
+
         :root {
-            --primary: #a020f0;
-            --danger: #ff0000;
-            --bg: #050208;
-            --card: #120a1d;
+            --primary: #bc13fe;
+            --primary-glow: #8b00ff;
+            --danger: #ff003c;
+            --danger-glow: #ff0000;
+            --bg: #030005;
+            --card-bg: rgba(15, 5, 25, 0.8);
         }
+
+        * { cursor: crosshair; }
 
         body {
             background-color: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
+            color: #e0e0e0;
+            font-family: 'Quantico', sans-serif;
             margin: 0;
-            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Effetto Scanline */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
         }
 
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(5, 2, 8, 0.6), rgba(5, 2, 8, 0.9)), url('image_325bda.jpg') center/cover;
+            height: 80vh;
+            background: linear-gradient(to bottom, rgba(3,0,5,0.2), var(--bg)), url('image_325bda.jpg') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 3px solid var(--primary);
+            position: relative;
         }
 
-        h1 { font-size: 4rem; letter-spacing: 8px; color: var(--primary); text-shadow: 0 0 20px var(--primary); margin: 0; }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary-glow);
+            margin: 0;
+            letter-spacing: 15px;
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+
+        .ip-container {
+            margin-top: 30px;
+            padding: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--danger));
+            border-radius: 5px;
+        }
 
         .ip-btn {
-            margin-top: 20px;
-            padding: 15px 35px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: white;
+            background: var(--bg);
+            padding: 20px 50px;
+            border: none;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
             font-weight: bold;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .ip-btn:hover { background: transparent; letter-spacing: 2px; }
+
+        .container { max-width: 1100px; margin: -100px auto 100px; padding: 20px; position: relative; z-index: 2; }
+
+        .blacklist-header {
+            text-align: center;
+            color: var(--danger);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--danger-glow);
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+
+        .traitor-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: 0.5s;
+        }
+
+        .traitor-card::before {
+            content: "TERMINATED";
+            position: absolute;
+            top: 20px; right: -30px;
+            background: var(--danger);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .traitor-card:hover {
+            border-color: var(--danger);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .traitor-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: var(--danger);
+            display: block;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--danger);
+        }
+
+        .icon-box { font-size: 4rem; margin: 20px 0; text-align: center; }
+
+        .report-box {
+            background: rgba(0,0,0,0.6);
+            padding: 15px;
+            border-left: 4px solid var(--danger);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .discord-cta {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .discord-link {
+            background: #5865F2;
+            color: #fff;
+            padding: 20px 40px;
+            text-decoration: none;
             border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
             transition: 0.3s;
         }
 
-        .ip-btn:hover { background: var(--primary); box-shadow: 0 0 20px var(--primary); }
+        .discord-link:hover { box-shadow: 0 0 40px #5865F2; transform: scale(1.05); }
 
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        footer { text-align: center; padding: 50px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
 
-        .blacklist-title { color: var(--danger); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 30px; }
-
-        .traitor-card {
-            background: var(--card);
-            border: 2px solid var(--danger);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-        }
-
-        .traitor-name { font-size: 3rem; color: var(--danger); font-weight: 900; display: block; }
-
-        .duck { font-size: 4rem; margin: 15px 0; animation: shake 0.5s infinite; }
-
-        @keyframes shake {
-            0% { transform: rotate(0); }
-            25% { transform: rotate(5deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0); }
-        }
-
-        .report { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 5px; margin-top: 20px; text-align: left; line-height: 1.6; }
-
-        .discord-link {
-            display: inline-block;
-            margin-top: 30px;
-            background: #5865F2;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        footer { padding: 40px; opacity: 0.5; font-size: 0.8rem; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        .live-tag { color: var(--danger); animation: pulse 1s infinite; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <section class="hero">
+        <p class="live-tag">[ ANALISI SISTEMA: COMPROMESSO ]</p>
         <h1>LEISTERMC</h1>
-        <p>L'OSCURITÀ NON CI FERMERÀ</p>
-        <button class="ip-btn" onclick="copyIP()">PLAY.LEISTERMC.IT</button>
+        <div class="ip-container">
+            <button class="ip-btn" onclick="copyIP()">PLAY.LEISTERMC.IT</button>
+        </div>
     </section>
 
     <div class="container">
-        <h2 class="blacklist-title"><i class="fas fa-skull-crossbones"></i> Registro Traditori</h2>
+        <h2 class="blacklist-header"><i class="fas fa-user-slash"></i> DATABASE TRADITORI</h2>
         
-        <div class="traitor-card">
-            <span class="traitor-name">NUMBERDUCK</span>
-            <div class="duck">🦆</div>
-            <div class="report">
-                <strong>STATUS:</strong> BANDITO PER SEMPRE<br>
-                <strong>CRIMINE:</strong> RAID TOTALE DEL SERVER DISCORD<br>
-                <strong>DETTAGLI:</strong> Ha eliminato ogni canale e ruolo, tradendo la fiducia dell'intera community. 
-                Tenta di distruggere ciò che non può controllare.
+        <div class="grid">
+            <div class="traitor-card">
+                <span class="traitor-name">NUMBERDUCK</span>
+                <div class="icon-box">🦆</div>
+                <div class="report-box">
+                    <strong>FILE:</strong> ALTO TRADIMENTO<br>
+                    <strong>AZIONE:</strong> RAID TOTALE DISCORD<br>
+                    <strong>NOTE:</strong> Ha abusato dei permessi per cancellare l'intera infrastruttura social del server. Soggetto non gradito.
+                </div>
             </div>
-            <p style="color: var(--danger); font-weight: bold; margin-top: 20px;">TAGLIA: VIVO O MORTO</p>
+
+            <div class="traitor-card">
+                <span class="traitor-name">LOREPRO</span>
+                <div class="icon-box">💀</div>
+                <div class="report-box">
+                    <strong>FILE:</strong> COMPLICE RAID<br>
+                    <strong>AZIONE:</strong> DISTRUZIONE CANALI & RUOLI<br>
+                    <strong>NOTE:</strong> Co-autore del sabotaggio. Ha collaborato attivamente per eliminare la storia di LeisterMC.
+                </div>
+            </div>
         </div>
 
-        <a href="#" class="discord-link"><i class="fab fa-discord"></i> ENTRA NEL NUOVO DISCORD</a>
+        <div class="discord-cta">
+            <p style="margin-bottom: 30px; opacity: 0.7;">REINIZIAMO DA QUI. PIÙ FORTI DI PRIMA.</p>
+            <a href="IL_TUO_LINK_DISCORD" class="discord-link"><i class="fab fa-discord"></i> ACCEDI AL DISCORD DELLA RESISTENZA</a>
+        </div>
     </div>
 
     <footer>
-        &copy; 2026 LEISTERMC - GIUSTIZIA PER IL RAID
+        &copy; 2026 LEISTERMC TERMINAL - DISTRUGGERE IL TRADIMENTO, COSTRUIRE L'IMPERO.
     </footer>
 
     <script>
         function copyIP() {
             navigator.clipboard.writeText("play.leistermc.it");
-            alert("IP Copiato: play.leistermc.it");
+            alert("SISTEMA: Indirizzo IP copiato negli appunti.");
         }
     </script>
 </body>
