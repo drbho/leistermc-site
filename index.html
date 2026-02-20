@@ -3,154 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeisterMC | Official Server</title>
+    <title>LeisterMC | Official Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #a020f0;
-            --secondary: #4b0082;
-            --dark: #0f051a;
-            --text: #e0e0e0;
-            --accent: #ff00ff;
+            --danger: #ff0000;
+            --bg: #050208;
+            --card: #120a1d;
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            text-align: center;
         }
 
-        
-        header {
+        .hero {
             height: 60vh;
-            background: linear-gradient(rgba(15, 5, 26, 0.7), rgba(15, 5, 26, 0.7)), 
-                        url('https://raw.githubusercontent.com/tuo-username/tuo-repo/main/image_325bda.jpg') center/cover;
+            background: linear-gradient(rgba(5, 2, 8, 0.6), rgba(5, 2, 8, 0.9)), url('image_325bda.jpg') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             border-bottom: 3px solid var(--primary);
         }
 
-        h1 {
-            font-size: 4rem;
-            color: var(--accent);
-            text-shadow: 0 0 20px var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 5px;
-        }
+        h1 { font-size: 4rem; letter-spacing: 8px; color: var(--primary); text-shadow: 0 0 20px var(--primary); margin: 0; }
 
-        .ip-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
-            border-radius: 50px;
-            border: 1px solid var(--primary);
-            cursor: pointer;
-            transition: 0.3s;
+        .ip-btn {
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: white;
             font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
         }
 
-        .ip-box:hover {
-            background: var(--primary);
-            box-shadow: 0 0 20px var(--accent);
-        }
+        .ip-btn:hover { background: var(--primary); box-shadow: 0 0 20px var(--primary); }
 
-        
-        .traitors-section {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
 
-        .section-title {
-            text-align: center;
-            color: #ff4444;
-            text-transform: uppercase;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px #ff4444;
-        }
+        .blacklist-title { color: var(--danger); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 30px; }
 
         .traitor-card {
-            background: rgba(255, 0, 0, 0.05);
-            border-left: 5px solid #ff4444;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: var(--card);
+            border: 2px solid var(--danger);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
         }
 
-        .traitor-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ff8888;
+        .traitor-name { font-size: 3rem; color: var(--danger); font-weight: 900; display: block; }
+
+        .duck { font-size: 4rem; margin: 15px 0; animation: shake 0.5s infinite; }
+
+        @keyframes shake {
+            0% { transform: rotate(0); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0); }
         }
 
-        
-        .footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
+        .report { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 5px; margin-top: 20px; text-align: left; line-height: 1.6; }
 
-        .duck-icon {
-            color: #ffd700;
-            font-size: 1.5rem;
-        }
-
-        .duck-credit {
-            color: #ffd700;
-            font-weight: bold;
+        .discord-link {
+            display: inline-block;
+            margin-top: 30px;
+            background: #5865F2;
+            color: white;
+            padding: 15px 30px;
             text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
         }
+
+        footer { padding: 40px; opacity: 0.5; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <header>
+    <section class="hero">
         <h1>LEISTERMC</h1>
-        <p>L'unico server dove i cristalli comandano.</p>
-        <div class="ip-box" onclick="copyIP()">
-            <i class="fas fa-copy"></i> PLAY.LEISTERMC.IT
-        </div>
-    </header>
-
-    <section class="traitors-section">
-        <h2 class="section-title"><i class="fas fa-skull-crossbones"></i> Lista dei Traditori</h2>
-        <p style="text-align: center; opacity: 0.6; margin-bottom: 30px;">Coloro che hanno voltato le spalle alla community. Non mostrate pietà.</p>
-        
-        <div class="traitor-card">
-            <div>
-                <span class="traitor-name">User_Esempio123</span><br>
-                <small>Motivo: Insulti allo staff e furto in zona protetta</small>
-            </div>
-            <div style="color: #ff4444;">BAN PERMANENTE</div>
-        </div>
-
-        <div class="traitor-card">
-            <div>
-                <span class="traitor-name">GreifMaster99</span><br>
-                <small>Motivo: Tradimento della fazione durante assedio</small>
-            </div>
-            <div style="color: #ffbb33;">RICERCATO</div>
-        </div>
+        <p>L'OSCURITÀ NON CI FERMERÀ</p>
+        <button class="ip-btn" onclick="copyIP()">PLAY.LEISTERMC.IT</button>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2024 LeisterMC Network. Tutti i diritti riservati.</p>
-        <p>Sviluppato con il supporto di <span class="duck-credit">NumberDuck</span> <i class="fas fa-duck duck-icon"></i>🦆</p>
+    <div class="container">
+        <h2 class="blacklist-title"><i class="fas fa-skull-crossbones"></i> Registro Traditori</h2>
+        
+        <div class="traitor-card">
+            <span class="traitor-name">NUMBERDUCK</span>
+            <div class="duck">🦆</div>
+            <div class="report">
+                <strong>STATUS:</strong> BANDITO PER SEMPRE<br>
+                <strong>CRIMINE:</strong> RAID TOTALE DEL SERVER DISCORD<br>
+                <strong>DETTAGLI:</strong> Ha eliminato ogni canale e ruolo, tradendo la fiducia dell'intera community. 
+                Tenta di distruggere ciò che non può controllare.
+            </div>
+            <p style="color: var(--danger); font-weight: bold; margin-top: 20px;">TAGLIA: VIVO O MORTO</p>
+        </div>
+
+        <a href="#" class="discord-link"><i class="fab fa-discord"></i> ENTRA NEL NUOVO DISCORD</a>
+    </div>
+
+    <footer>
+        &copy; 2026 LEISTERMC - GIUSTIZIA PER IL RAID
     </footer>
 
     <script>
         function copyIP() {
-            const ip = "play.leistermc.it";
-            navigator.clipboard.writeText(ip);
-            alert("IP copiato! Incolla su Minecraft: " + ip);
+            navigator.clipboard.writeText("play.leistermc.it");
+            alert("IP Copiato: play.leistermc.it");
         }
     </script>
 </body>
