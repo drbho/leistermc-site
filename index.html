@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeisterMC | Official Server</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #a020f0;
+            --secondary: #4b0082;
+            --dark: #0f051a;
+            --text: #e0e0e0;
+            --accent: #ff00ff;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(15, 5, 26, 0.7), rgba(15, 5, 26, 0.7)), 
+                        url('https://raw.githubusercontent.com/tuo-username/tuo-repo/main/image_325bda.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+
+        .ip-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .ip-box:hover {
+            background: var(--primary);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        
+        .traitors-section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ff4444;
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff4444;
+        }
+
+        .traitor-card {
+            background: rgba(255, 0, 0, 0.05);
+            border-left: 5px solid #ff4444;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .traitor-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff8888;
+        }
+
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .duck-icon {
+            color: #ffd700;
+            font-size: 1.5rem;
+        }
+
+        .duck-credit {
+            color: #ffd700;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LEISTERMC</h1>
+        <p>L'unico server dove i cristalli comandano.</p>
+        <div class="ip-box" onclick="copyIP()">
+            <i class="fas fa-copy"></i> PLAY.LEISTERMC.IT
+        </div>
+    </header>
+
+    <section class="traitors-section">
+        <h2 class="section-title"><i class="fas fa-skull-crossbones"></i> Lista dei Traditori</h2>
+        <p style="text-align: center; opacity: 0.6; margin-bottom: 30px;">Coloro che hanno voltato le spalle alla community. Non mostrate pietà.</p>
+        
+        <div class="traitor-card">
+            <div>
+                <span class="traitor-name">User_Esempio123</span><br>
+                <small>Motivo: Insulti allo staff e furto in zona protetta</small>
+            </div>
+            <div style="color: #ff4444;">BAN PERMANENTE</div>
+        </div>
+
+        <div class="traitor-card">
+            <div>
+                <span class="traitor-name">GreifMaster99</span><br>
+                <small>Motivo: Tradimento della fazione durante assedio</small>
+            </div>
+            <div style="color: #ffbb33;">RICERCATO</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 LeisterMC Network. Tutti i diritti riservati.</p>
+        <p>Sviluppato con il supporto di <span class="duck-credit">NumberDuck</span> <i class="fas fa-duck duck-icon"></i>🦆</p>
+    </footer>
+
+    <script>
+        function copyIP() {
+            const ip = "play.leistermc.it";
+            navigator.clipboard.writeText(ip);
+            alert("IP copiato! Incolla su Minecraft: " + ip);
+        }
+    </script>
+</body>
+</html>
